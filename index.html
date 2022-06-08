@@ -36,6 +36,7 @@
         </style>
     </head>
     <body>
+        <h1>Adam</h1>
         <table id="field" style="border: 1px solid black"></table>
         <p id="counter">0</p>
         <script>
@@ -75,8 +76,8 @@
 
             function countNeibhours(x, y) {
                 var count = 0;
-                for (dy = -1; dy <= 1; dy++) {
-                    for (dx = -1; dx <= 1; dx+) {
+                for (var dy = -1; dy <= 1; dy++) {
+                    for (var dx = -1; dx <= 1; dx++) {
                         var nx = (x + dx + size) % size;
                         var ny = (y + dy + size) % size;
                         count = count + cells[ny][nx];
@@ -107,9 +108,8 @@
                 requestAnimationFrame(newGeneration);
             }
 
-            function init() {
-                createField();
-                for (var i = 0; i < Math.floor(size * size * 0.1); i++) {
+            function populateField() {
+                for (var i = 0; i < Math.floor(size * size * 0.5); i++) {
                     var x, y;
                     do {
                         x = Math.floor(Math.random() * size),
@@ -120,6 +120,11 @@
                         }
                     } while(true);
                 }
+            }
+
+            function init() {
+                createField();
+                populateField();
                 draw();
                 // setInterval(newGeneration, 10);
             }
