@@ -1,0 +1,39 @@
+@charset "UTF-8";
+:root {
+    --main-bg-color: white;
+}
+html {
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: var(--main-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.cell {
+    width: 4px;
+    height: 4px;
+    border: 1px;
+}
+.cell:hover {
+    outline: 1px solid red;
+}
+.filled {
+    background-color: black;
+}
+.empty {
+    background-color: white;
+}
+#counter {
+    font-size: xx-large;
+}
