@@ -20,20 +20,6 @@ body {
     justify-content: center;
     flex-direction: column;
 }
-.cell {
-    width: 4px;
-    height: 4px;
-    border: 1px;
-}
-.cell:hover {
-    outline: 1px solid red;
-}
-.filled {
-    background-color: black;
-}
-.empty {
-    background-color: white;
-}
-#counter {
-    font-size: xx-large;
+canvas {
+    background: red;
 }

@@ -1,35 +1,38 @@
 'use strict';
 
-var size = 80;
-var htmlElements;
-var counterElement = document.querySelector('#counter');
-var count = 0;
-var cells;
-var EMPTY = 0;
-var ALIVE = 1;
+let size = 100;
+let counterElement = document.querySelector('#counter');
+let count = 0;
+let cells = [];
+const EMPTY = 0;
+const ALIVE = 1;
+const sxy = 5;
 
-function createField() {
-    htmlElements = [];
-    cells = [];
-    var table = document.querySelector('#field');
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+
+const width = canvas.width = size * sxy; // window.innerWidth;
+const height = canvas.height = size * sxy; // window.innerHeight;
+
+function createArray() {
     for (var y = 0; y < size; y++) {
-        var tr = document.createElement('tr');
-        var tdElements = [];
         cells.push(new Array(size).fill(EMPTY));
-        htmlElements.push(tdElements);
-        table.appendChild(tr);
-        for (var x = 0; x < size; x++) {
-            var td = document.createElement('td');
-            tdElements.push(td);
-            tr.appendChild(td);
-        }
     }
 }
 
 function draw() {
+    function black() {
+        ctx.fillStyle = 'black';
+        ctx.fillRect(x * sxy, y * sxy, size, size);
+    }
+    function white() {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(x * sxy, y * sxy, size, size);
+    }
     for (var y = 0; y < size; y++) {
         for (var x = 0; x < size; x++) {
-            htmlElements[y][x].setAttribute('class', 'cell ' + (cells[y][x] == ALIVE ? 'filled' : 'empty'));
+            ctx.fillStyle = 'black';
+            cells[y][x] == ALIVE ? black() : white();
         }
     }
 }
@@ -83,10 +86,9 @@ function populateField() {
 }
 
 function init() {
-    createField();
+    createArray();
     populateField();
     draw();
-    // setInterval(newGeneration, 10);
 }
 
 init();
